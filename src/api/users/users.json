@@ -35,5 +35,29 @@
       "city": "Irving",
       "state": "Texas",
       "zip_code": "65209"
+    },
+    {"id": "4",
+      "first_name": "Michael",
+      "last_name": "Jones",
+      "work_phone": "777-444-8765",
+      "cell_phone": "567-123-7876",
+      "email_id": "Michael@gmail.com",
+      "date_of_birth": "1995-08-12",
+      "street": "333 Friends Street",
+      "city": "Jackson",
+      "state": "Florida",
+      "zip_code": "23421"
+    },
+    {"id": "5",
+      "first_name": "Bryan",
+      "last_name": "Williams",
+      "work_phone": "109-444-6578",
+      "cell_phone": "231-235-8767",
+      "email_id": "bw@gmail.com",
+      "date_of_birth": "1999-10-11",
+      "street": "2456 Community Dr",
+      "city": "Sunnyvale",
+      "state": "California",
+      "zip_code": "34356"
     }
     ]

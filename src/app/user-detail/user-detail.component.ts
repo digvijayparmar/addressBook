@@ -20,6 +20,8 @@ export class UserDetailComponent implements OnInit {
     this.getUserDetails(this.route.snapshot.params['id']);
   }
 
+
+
   getUserDetails(id) {
     this.api.getUserFromJson(id)
       .subscribe(data => {

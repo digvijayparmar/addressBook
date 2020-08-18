@@ -4,33 +4,66 @@
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
   </div>
   <div class="button-row">
-    <a mat-flat-button color="primary" (click)="productDetails()"><mat-icon>info</mat-icon></a>
+    <a mat-flat-button color="primary" [routerLink]="['/user-list']"><mat-icon>home</mat-icon> Home</a>
   </div>
   <mat-card class="example-card">
-    <form [formGroup]="productForm" (ngSubmit)="onFormSubmit(productForm.value)">
+    <form [formGroup]="UserForm" (ngSubmit)="onFormSubmit(UserForm.value)">
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Product Name" formControlName="prod_name"
+        <input matInput placeholder="First Name" formControlName="first_name"
                [errorStateMatcher]="matcher">
         <mat-error>
-          <span *ngIf="!productForm.get('prod_name').valid && productForm.get('prod_name').touched">Please enter Product Name</span>
+          <span *ngIf="!UserForm.get('first_name').valid && UserForm.get('first_name').touched">Please enter First Name</span>
         </mat-error>
       </mat-form-field>
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Product Desc" formControlName="prod_desc"
+        <input matInput placeholder="Last Name" formControlName="last_name"
                [errorStateMatcher]="matcher">
         <mat-error>
-          <span *ngIf="!productForm.get('prod_desc').valid && productForm.get('prod_desc').touched">Please enter Product Description</span>
+          <span *ngIf="!UserForm.get('last_name').valid && UserForm.get('last_name').touched">Please enter Last Name</span>
         </mat-error>
       </mat-form-field>
+
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Product Price" formControlName="prod_price"
+        <input matInput placeholder="Work Phone" formControlName="work_phone">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Cell Phone" formControlName="cell_phone">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Email Id" formControlName="email_id"
                [errorStateMatcher]="matcher">
         <mat-error>
-          <span *ngIf="!productForm.get('prod_price').valid && productForm.get('prod_price').touched">Please enter Product Price</span>
+          <span *ngIf="!UserForm.get('email_id').valid && UserForm.get('email_id').touched">Please enter Product Price</span>
         </mat-error>
       </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Date of Birth" formControlName="date_of_birth">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Street" formControlName="street">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="City" formControlName="city">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="State" formControlName="state">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Zip Code" formControlName="zip_code">
+      </mat-form-field>
+
       <div class="button-row">
-        <button type="submit" [disabled]="!productForm.valid" mat-flat-button color="primary"><mat-icon>save</mat-icon></button>
+        <button type="submit" [disabled]="!UserForm.valid" mat-flat-button color="primary"><mat-icon>save</mat-icon>Save</button>
+        <button type="submit" mat-flat-button color="warn" (click)="openDeleteDialog()"><mat-icon>delete</mat-icon>Delete</button>
+
+
       </div>
     </form>
   </mat-card>

@@ -26,6 +26,11 @@ const routes: Routes = [
     component: UserEditComponent,
     data: { title: 'Edit User' }
   },
+  {
+    path: 'user-edit/:id/read-only',
+    component: UserEditComponent,
+    data: { title: 'Edit User' }
+  },
   { path: '',
     redirectTo: '/user-list',
     pathMatch: 'full'

@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatDialogModule} from "@angular/material";
 
 import {
   MatPaginatorModule,
@@ -23,6 +24,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserAddComponent } from './user-add/user-add.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { DeleteDialogComponent } from './dialog/user-delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { UserEditComponent } from './user-edit/user-edit.component';
     UserListComponent,
     UserDetailComponent,
     UserAddComponent,
-    UserEditComponent
+    UserEditComponent,
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,11 @@ import { UserEditComponent } from './user-edit/user-edit.component';
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    DeleteDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

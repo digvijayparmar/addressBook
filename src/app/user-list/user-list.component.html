@@ -1,19 +1,19 @@
 
   
-  <div class="button-row">
+  <!-- <div class="button-row">
     <a mat-flat-button color="primary" [routerLink]="['/user-add']"><mat-icon>add</mat-icon> Add</a>
-  </div>
+  </div> -->
 
     <div class="container mat-elevation-z8">
 
       <div>
         <mat-form-field floatPlaceholder="never" color="accent" class="example-full-width">
-          <input matInput #filter placeholder="  Filter address">
+          <input matInput #filter placeholder="  Filter address" [(ngModel)] = 'listFilter'>
         </mat-form-field>
       </div>
 
 
-    <mat-table #table [dataSource]="data" matSort matSortActive="first_name" matSortDisableClear matSortDirection="asc" class="mat-cell" >
+    <mat-table #table [dataSource]="filteredData" matSort matSortActive="first_name" matSortDisableClear matSortDirection="asc" class="mat-cell" >
 
       <!-- Product Name Column -->
       <ng-container matColumnDef="first_name">
@@ -67,26 +67,40 @@
 
       <!-- Product Description Column -->
       <ng-container matColumnDef="state">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>State</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>State</mat-header-cell>
         <mat-cell *matCellDef="let row">{{row.state}}</mat-cell>
       </ng-container>
 
                   <!-- Product Update at Column -->
-      <ng-container matColumnDef="zip_code">
+       <ng-container matColumnDef="zip_code">
         <mat-header-cell *matHeaderCellDef >Zip</mat-header-cell>
         <mat-cell *matCellDef="let row">{{row.zip_code}}</mat-cell>
       </ng-container>
 
+      <!-- Action --> 
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef>
+          <a mat-flat-button color="primary" [routerLink]="['/user-add']"><mat-icon>add</mat-icon> Add address</a>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row"> 
+          <a mat-flat-button color="primary" [routerLink]="['/user-edit/', row.id]"><mat-icon>edit</mat-icon> </a>
+          <a mat-flat-button color="warn" (click)="openDeleteDialog()"><mat-icon>delete</mat-icon> </a>
+        </mat-cell>
+
+      </ng-container>
+
+
+
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/user-details/', row.id]"></mat-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/user-edit/', row.id, {'read-only':'yes'}]"></mat-row>
     </mat-table>
 
-    <div class="no-results" [style.display]="data.length == 0 ? '' : 'none'">
+    <div class="no-results" [style.display]="filteredData.length == 0 ? '' : 'none'">
       No results
     </div>
   
     <mat-paginator #paginator
-                   [length]="data.length"
+                   [length]="filteredData.length"
                    [pageIndex]="0"
                    [pageSize]="10"
                    [pageSizeOptions]="[5, 10, 25, 100]">
